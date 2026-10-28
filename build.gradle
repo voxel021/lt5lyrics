@@ -1,0 +1,113 @@
+plugins {
+	id 'net.fabricmc.fabric-loom' version "${loom_version}"
+	id 'maven-publish'
+}
+
+repositories {
+	mavenCentral()
+}
+
+loom {
+	splitEnvironmentSourceSets()
+
+	mods {
+		"lt5lyrics" {
+			sourceSet sourceSets.main
+			sourceSet sourceSets.client
+		}
+	}
+}
+
+dependencies {
+	minecraft "com.mojang:minecraft:${project.minecraft_version}"
+	implementation "net.fabricmc:fabric-loader:${project.loader_version}"
+
+	implementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
+
+	include(implementation("net.java.dev.jna:jna:5.15.0"))
+	// LRCLIB Lyricsfile 1.0 uses YAML; SafeConstructor with strict limits is used at runtime.
+	include(implementation("org.yaml:snakeyaml:2.4"))
+}
+
+processResources {
+	def version = project.version
+	inputs.property "version", version
+
+	filesMatching("fabric.mod.json") {
+		expand "version": version
+	}
+}
+
+tasks.withType(JavaCompile).configureEach {
+	it.options.release = 25
+	it.options.compilerArgs += ["-Xmaxerrs", "500"]
+}
+
+sourceSets {
+	btpCheck {
+		java.srcDir 'src/check/java'
+		compileClasspath += sourceSets.client.output + sourceSets.client.compileClasspath
+		runtimeClasspath += sourceSets.btpCheck.output + sourceSets.client.output + sourceSets.client.runtimeClasspath
+	}
+}
+
+tasks.register('checkBtp', JavaExec) {
+	dependsOn tasks.named('btpCheckClasses')
+	classpath = sourceSets.btpCheck.runtimeClasspath
+	mainClass = 'com.lt5lyrics.client.island.WorldLyricsCheck'
+	enableAssertions = true
+}
+
+tasks.named('check') {
+	dependsOn tasks.named('compileBtpCheckJava')
+	dependsOn tasks.named('checkBtp')
+}
+
+java {
+	withSourcesJar()
+
+	sourceCompatibility = JavaVersion.VERSION_25
+	targetCompatibility = JavaVersion.VERSION_25
+}
+
+jar {
+	def projectName = project.name
+	inputs.property "projectName", projectName
+
+	from("LICENSE") {
+		rename { "${it}_$projectName"}
+	}
+	from("NOTICE-VoxelZero.txt")
+}
+
+publishing {
+	publications {
+		create("mavenJava", MavenPublication) {
+			from components.java
+		}
+	}
+}
+
+// Optional live-network smoke test; never required by the regular build.
+tasks.register('probeLyricsSources', JavaExec) {
+	dependsOn tasks.named('btpCheckClasses')
+	classpath = sourceSets.btpCheck.runtimeClasspath
+	mainClass = 'com.lt5lyrics.client.music.ProviderLiveProbe'
+	enableAssertions = true
+}
+
+// Optional live and locally captured public-API samples; never required for a regular build.
+tasks.register('probeWordSync', JavaExec) {
+	dependsOn tasks.named('btpCheckClasses')
+	classpath = sourceSets.btpCheck.runtimeClasspath
+	mainClass = 'com.lt5lyrics.client.music.WordSyncLiveProbe'
+	enableAssertions = true
+}
+
+// Optional live comparison; prints classifications and counts only, never lyric text.
+tasks.register('probeCommunitySources', JavaExec) {
+	dependsOn tasks.named('btpCheckClasses')
+	classpath = sourceSets.btpCheck.runtimeClasspath
+	mainClass = 'com.lt5lyrics.client.music.CommunityLiveProbe'
+	enableAssertions = true
+}

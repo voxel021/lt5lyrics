@@ -1,0 +1,40 @@
+LT5Lyrics - VoxelZero edition
+=============================
+
+Copyright (C) 2026 VoxelZero, for the modifications and additions made by
+VoxelZero (including the community & credits panel and its text).
+Portions remain Copyright (C) their original authors.
+
+Made by VoxelZero. Vibe-coded with AI.
+Discord: https://discord.gg/3kqxEwDpXm
+
+This program is free software licensed under the GNU Affero General Public
+License, version 3 (see the LICENSE file). It comes WITHOUT ANY WARRANTY.
+
+ADDITIONAL TERMS (AGPL-3.0, section 7), applying to the material added by
+VoxelZero:
+
+1. Attribution (section 7(b)). All copies and modified versions must keep the
+   "Made by VoxelZero" notice, the "Vibe-coded with AI" notice, the Discord
+   link, and the copyright lines in this file, both in the in-game credits
+   panel and in fabric.mod.json.
+
+2. No misrepresentation (section 7(c)). Modified versions must be clearly
+   marked as modified and must not be presented as the original or as an
+   official VoxelZero release.
+
+3. Names and branding (section 7(e)). No rights are granted to use the name
+   "VoxelZero", the VoxelZero Discord server, or related logos and pictures
+   as the name or branding of any other project.
+
+4. Source. If you distribute this mod (or let people use a modified version
+   over a network), you must make the complete corresponding source code
+   available under the AGPL, as the license requires.
+
+STATEMENT ON AI TRAINING
+VoxelZero reserves all rights to the extent permitted by law and asks that
+this code and its assets not be used to train AI models. This is a request
+and a reservation of rights, not an additional license restriction.
+
+Third-party components (fonts, the Windows media-session library, JNA and
+others) keep their own licenses, which are not changed by this notice.

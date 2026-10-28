@@ -1,0 +1,10 @@
+Bundled Open-Source Typefaces (SIL Open Font License 1.1)
+=========================================================
+All bundled .ttf font files in this directory are licensed under the SIL Open Font License, Version 1.1 (https://openfontlicense.org):
+
+- khmer_classic.ttf    : Kantumruy Pro (Copyright Tep Sovichet, SIL OFL 1.1)
+- minecraft_pixel.ttf  : Pixelify Sans (Copyright Stefie Justprince, SIL OFL 1.1)
+- rounded_pop.ttf      : Quicksand (Copyright Andrew Paglinawan, SIL OFL 1.1)
+- editorial_serif.ttf  : Playfair Display (Copyright Claus Eggers Sorensen, SIL OFL 1.1)
+- mono_tech.ttf        : JetBrains Mono (Copyright JetBrains s.r.o., SIL OFL 1.1)
+- stage_bold.ttf       : Outfit (Copyright Outfit.io / Rodrigo Fuenzalida, SIL OFL 1.1)

@@ -1,0 +1,16 @@
+{
+	"required": true,
+	"package": "com.lt5lyrics.client.mixin",
+	"compatibilityLevel": "JAVA_25",
+	"client": [
+		"MouseHandlerMixin",
+		"GameRendererMixin",
+		"BossHealthOverlayMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	},
+	"overwrites": {
+		"requireAnnotations": true
+	}
+}
