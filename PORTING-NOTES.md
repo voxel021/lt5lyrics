@@ -1,0 +1,9 @@
+# Developer notes: LT5Lyrics 1.11.7 → Minecraft 26.3
+
+This is a **complete standalone source project** for Java 26.3; do not copy its JAR or classes into a different Minecraft-version project. Use JDK 25 and `./gradlew checkBtp jar`; dependencies and the Gradle wrapper download on first use. See `README.md` for the exact versioned JAR name and `VERIFICATION.md` for tested and untested behavior.
+
+The full version-specific community implementation is `src/client/java/com/lt5lyrics/client/island/CommunityPanel.java`; the island interaction and automatic animated opening are in `MusicIsland.java`. This project retains the original license, notices, picture, language files and 1.11.7 community behavior. The included `COMMUNITY-AUTO-OPEN-UPDATE.md` and `COMMUNITY-PANEL-INTEGRATION.md` are historical, exact 1.21.11 integration guides; their old find/replace blocks are not a substitute for the 26.3 source. For exact changes from the 1.21.11 source, use the accompanying version-specific unified patch, or compare the complete projects. The patch does not restrict modification or prove authorship.
+
+Port highlights: Mojang's 26.x unobfuscated APIs, Java 25, Fabric/Loom versions, updated render pipelines, frame/buffer APIs, event hooks, shader resources and an empty-scissor guard. The default Studio key is U instead of O (O is Minecraft Friends); previously saved key bindings are left alone. The v1.11.7 1.21.11 project and JAR are unchanged.
+
+26.3 adds the SDL3/input and RenderPearl migration: keyboard scancodes, modifier and mouse-button values, current screen/text-input handling, world-render events, shader include/interface syntax and compiled pipelines. `DesktopFiles.java` opens SDL file dialogs on the Minecraft thread; its reusable native callback and filter buffers remain alive until process exit, and results are marshaled back to the client thread. Dialog capabilities depend on the OS backend. No test-only GLX fixture is part of this project.

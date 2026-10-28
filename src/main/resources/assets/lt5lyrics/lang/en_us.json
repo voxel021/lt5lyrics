@@ -1,0 +1,20 @@
+{
+  "key.category.lt5lyrics.general": "LT5Lyrics",
+  "key.categories.lt5lyrics": "LT5Lyrics",
+  "key.lt5lyrics.settings": "Open LT5Lyrics Settings",
+  "key.lt5lyrics.play_pause": "Play / Pause Music",
+  "key.lt5lyrics.prev_track": "Previous Track",
+  "key.lt5lyrics.next_track": "Next Track",
+  "key.lt5lyrics.toggle_sky": "Toggle Sky Lyrics Mode",
+  "key.lt5lyrics.toggle_hud": "Toggle HUD Island",
+  "lt5lyrics.community.title": "LT5Lyrics",
+  "lt5lyrics.community.made_by": "Made by VoxelZero",
+  "lt5lyrics.community.ai": "Vibe-coded with AI",
+  "lt5lyrics.community.discord": "Join our Discord",
+  "lt5lyrics.community.copyright": "Copyright (C) 2026 VoxelZero, for the modifications and additions made by VoxelZero (including the community & credits panel and its text).",
+  "lt5lyrics.community.original_copyright": "Portions remain Copyright (C) their original authors.",
+  "lt5lyrics.player.automatic": "Automatic (lyrics first)",
+  "lt5lyrics.player.switch_hint": "Cycle players and Automatic. Automatic checks other playing titles with enabled lyric providers if the selected player has no usable lyrics.",
+  "lt5lyrics.file.overwrite.title": "Confirm overwrite",
+  "lt5lyrics.file.overwrite.message": "Replace the existing file?"
+}
