@@ -150,3 +150,15 @@ Original authors and third-party notices are preserved.
 Uses [MediaPlayerInfo](https://github.com/Redstonecrafter0/MediaPlayerInfo),
 [JNA](https://github.com/java-native-access/jna), SnakeYAML, and bundled fonts;
 see the [user guide's license section](USER_GUIDE.md#license) and bundled notices.
+
+## Native binaries & release transparency
+
+**Made by VoxelZero.** See [NATIVES.md](NATIVES.md) for the native-file inventory,
+verified JNA origins, and the **still-unresolved MediaPlayerInfo DLL provenance**
+for Minecraft 1.21.11 and 26.2. [Release instructions](docs/RELEASING.md) describe
+the version-specific sources, JDKs, proposed tags, and automated draft releases.
+Third-party binaries retain their original licenses and credits.
+
+Original LT5Lyrics / Song Island credit is preserved. Its exact upstream project
+URL still needs to be supplied by the maintainer; no guessed original-project link
+is presented here. Existing MediaPlayerInfo and other dependency credits remain above.

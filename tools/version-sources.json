@@ -1,0 +1,12 @@
+{
+  "1.21.11": {
+    "archive": "LT5Lyrics-1.11.7-source.zip",
+    "sha256": "1563e83358771571129be305a5e6ec073d3d0e70b684fad137c1483e7963c1e7",
+    "jdk": "21"
+  },
+  "26.2": {
+    "archive": "LT5Lyrics-1.11.7-mc26.2-source.zip",
+    "sha256": "755889fe5f8809c75a629a66fedb334f25ba287ec2a6090bc85893481a28f091",
+    "jdk": "25"
+  }
+}
