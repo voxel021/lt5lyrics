@@ -47,7 +47,7 @@ These tag names are **proposed, not created or verified existing links**. The ta
 
 ## Before publishing
 
-1. Resolve the media DLL's provenance as described in [NATIVES.md](../NATIVES.md). The workflow does **not** compile the DLL because its exact source and toolchain have not been established. No made-up native compile step is included.
+1. Review the verified third-party distribution origins in [NATIVES.md](../NATIVES.md), including the limitations on the media DLL's ultimate compilation source. The workflow does **not** compile the DLL because its exact source and toolchain have not been established. No made-up native compile step is included.
 2. Review successful CI logs, the new native inventory, source identity, and the draft release. CI may expose dependency/build problems; none of these version builds has been run locally in this Java-less workspace.
 3. Compare new output against historical JAR hashes if asserting equality. Do not assume they are equal. Updated source metadata or dependency resolution can change a JAR's hash.
 4. Publish the draft release only when ready and all attribution/license requirements are met. Draft release links/assets are not public to moderators.

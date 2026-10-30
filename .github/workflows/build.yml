@@ -79,7 +79,7 @@ jobs:
           python tools/audit_natives.py release-assets/*.jar > release-assets/native-audit.json
           cp tools/version-sources.json release-assets/source-manifest.json
           printf 'Git commit: %s\nMinecraft: %s\n' "$GITHUB_SHA" "$MC_VERSION" > release-assets/BUILD-INFO.txt
-          printf '%s\n' 'Prebuilt MediaPlayerInfo.dll provenance is unresolved; see NATIVES.md.' >> release-assets/BUILD-INFO.txt
+          printf '%s\n' 'Prebuilt MediaPlayerInfo.dll matches the documented Song Island commit; ultimate compiler source is not verified. See NATIVES.md.' >> release-assets/BUILD-INFO.txt
           (cd release-assets && sha256sum *.jar > SHA256SUMS)
       - uses: actions/upload-artifact@v4
         with:
@@ -107,4 +107,4 @@ jobs:
         run: |
           gh release create "$RELEASE_TAG" release-assets/* --verify-tag --draft \
             --title "LT5Lyrics $RELEASE_TAG" \
-            --notes "Built from the tagged, hash-checked version source. See NATIVES.md before publishing: MediaPlayerInfo.dll origin remains unverified. Install the normal JAR, not the sources JAR. Download and upload that exact artifact to Modrinth; verify SHA256SUMS."
+            --notes "Built from the tagged, hash-checked version source. See NATIVES.md before publishing: MediaPlayerInfo.dll matches the documented Song Island commit; its ultimate native compiler source is not verified. Install the normal JAR, not the sources JAR. Download and upload that exact artifact to Modrinth; verify SHA256SUMS."

@@ -1,6 +1,7 @@
 # Native binary provenance
 
-> **Not ready to claim full provenance:** the MediaPlayerInfo DLL origin is still unverified.
+> **Public distribution origin verified:** the media DLL matches Song Island at the commit linked below.
+> Its ultimate MediaPlayerInfo compiler source/release is not independently established.
 > A successful Gradle build copies that DLL; it does not rebuild or authenticate it.
 
 ## Scope
@@ -53,28 +54,26 @@ Each row applies to **both** listed versions; full paths and individual hashes a
 | 1.21.11; 26.2 | `META-INF/jars/jna-5.15.0.jar!/com/sun/jna/win32-aarch64/jnidispatch.dll` | Third-party, verified payload match | [JNA platform archive](https://github.com/java-native-access/jna/blob/5.15.0/lib/native/win32-aarch64.jar) | 5.15.0; commit above |
 | 1.21.11; 26.2 | `META-INF/jars/jna-5.15.0.jar!/com/sun/jna/win32-x86-64/jnidispatch.dll` | Third-party, verified payload match | [JNA platform archive](https://github.com/java-native-access/jna/blob/5.15.0/lib/native/win32-x86-64.jar) | 5.15.0; commit above |
 | 1.21.11; 26.2 | `META-INF/jars/jna-5.15.0.jar!/com/sun/jna/win32-x86/jnidispatch.dll` | Third-party, verified payload match | [JNA platform archive](https://github.com/java-native-access/jna/blob/5.15.0/lib/native/win32-x86.jar) | 5.15.0; commit above |
-| 1.21.11; 26.2 | `mediaplayerinfo/natives/win/MediaPlayerInfo.dll` | Unverified; appears to be vendored third-party MediaPlayerInfo | [Candidate upstream only](https://github.com/Redstonecrafter0/MediaPlayerInfo) | **Unknown — no release/commit match established** |
+| 1.21.11; 26.2 | `mediaplayerinfo/natives/win/MediaPlayerInfo.dll` | Third-party, unchanged Song Island DLL (verified payload match) | [Song Island vendored DLL](https://github.com/Mimitokox/song-island-minecraft/blob/af87dc41b916bf6f6a95604611efbe8b2d9ff2c4/src/main/resources/mediaplayerinfo/natives/win/MediaPlayerInfo.dll) | Song Island commit `af87dc41b916bf6f6a95604611efbe8b2d9ff2c4`; ultimate MediaPlayerInfo release unknown |
 | 1.21.11; 26.2 | `META-INF/jars/jna-5.15.0.jar!/com/sun/jna/aix-ppc/libjnidispatch.a` | Third-party, verified payload match | [JNA platform archive](https://github.com/java-native-access/jna/blob/5.15.0/lib/native/aix-ppc.jar) | 5.15.0; commit above |
 | 1.21.11; 26.2 | `META-INF/jars/jna-5.15.0.jar!/com/sun/jna/aix-ppc64/libjnidispatch.a` | Third-party, verified payload match | [JNA platform archive](https://github.com/java-native-access/jna/blob/5.15.0/lib/native/aix-ppc64.jar) | 5.15.0; commit above |
 
 
 
-## Unresolved MediaPlayerInfo DLL
+## MediaPlayerInfo DLL: verified distribution origin
 
-`mediaplayerinfo/natives/win/MediaPlayerInfo.dll` has SHA-256:
+The maintainer identified [Song Island](https://github.com/Mimitokox/song-island-minecraft) as the original project.
+Its `src/main/resources/mediaplayerinfo/natives/win/MediaPlayerInfo.dll` at commit [`af87dc41b916bf6f6a95604611efbe8b2d9ff2c4`](https://github.com/Mimitokox/song-island-minecraft/tree/af87dc41b916bf6f6a95604611efbe8b2d9ff2c4) is **byte-for-byte identical** to the media DLL in both submitted LT5Lyrics JARs and both supplied source ZIPs.
 
-```text
-301c16eeb8223bb26eb31f83c93e8dcf8ddd13625cdd52f05fcd0862ecb858e9
-```
+- [Permanent upstream binary link](https://github.com/Mimitokox/song-island-minecraft/blob/af87dc41b916bf6f6a95604611efbe8b2d9ff2c4/src/main/resources/mediaplayerinfo/natives/win/MediaPlayerInfo.dll)
+- [Comparison evidence](docs/native-audit/song-island-upstream-comparison.json)
+- SHA-256: `301c16eeb8223bb26eb31f83c93e8dcf8ddd13625cdd52f05fcd0862ecb858e9`
 
-The existing project credits MediaPlayerInfo and contains Java code in `dev.redstones.mediaplayerinfo` that loads this path. Those are clues, not proof of a release. The candidate upstream has C++ sources (`native/main.cpp`, `native/main.h`) and a `v0.1.0` release, but **we have not established that this DLL came from that release**. The upstream release asset could not be downloaded in this workspace, so no claim of a match is made.
+This establishes an exact public **third-party distribution origin**, not a claim that VoxelZero compiled this DLL. The project already credits [MediaPlayerInfo](https://github.com/Redstonecrafter0/MediaPlayerInfo); that repository is the credited underlying library, but its exact release/native-source commit has **not** been determined. Do not label this DLL as MediaPlayerInfo v0.1.0 without matching evidence. Matching a public binary is not a security review or an independent rebuild.
 
-To resolve:
+If moderators require the ultimate native compilation source rather than the supplied equivalent origin, ask the Song Island maintainer which MediaPlayerInfo release or C++ commit/toolchain produced this hash. If any native changes are made, provide their exact source and a Windows compile job, and make Gradle consume that output. No guessed compile step or native replacement has been added.
 
-1. Ask the maintainer where the DLL was obtained and whether it was modified or compiled locally. Also obtain the original LT5Lyrics/Song Island repository URL; it has not been supplied.
-2. Download candidate official release JARs, extract their media DLLs, and compare SHA-256 with the hash above. Record a match with the exact release asset and source tag/commit. Never assign a version just because it is the latest release.
-3. If it was modified or built locally, obtain the exact C++ sources and toolchain/build instructions. Add a Windows native-build job, consume its output in Gradle, and test the replacement without changing functionality. Do not claim the candidate upstream sources reproduce this binary without verification.
-4. Preserve original license and attribution notices. JNA retains its upstream Apache-2.0/LGPL-2.1 licensing; MediaPlayerInfo is credited under AGPL-3.0, but confirming its exact source remains necessary.
+All existing credits and licenses are preserved: Song Island/MediaPlayerInfo are credited under AGPL-3.0; JNA retains its upstream Apache-2.0/LGPL-2.1 licensing.
 
 ## Repeat the audit
 
@@ -94,4 +93,4 @@ The scanner uses filename extensions; it is an inventory, not a malware scanner 
 
 ## Builds and moderation
 
-See [release instructions](docs/RELEASING.md). Each tag selects the matching uploaded source archive, not the root 26.3 project. CI audits its newly built JAR and attaches that report and checksums to a **draft** GitHub release. Drafts must be deliberately published once provenance is resolved. Upload the exact resulting installable JAR to Modrinth. Building Java does not prove an unexplained prebuilt native came from source, and a new JAR is not claimed to match an old submitted JAR unless its whole-file hash matches.
+See [release instructions](docs/RELEASING.md). Each tag selects the matching uploaded source archive, not the root 26.3 project. CI audits its newly built JAR and attaches that report and checksums to a **draft** GitHub release. Drafts must be deliberately published after reviewing provenance and successful builds. Upload the exact resulting installable JAR to Modrinth. Building Java does not prove an unexplained prebuilt native came from source, and a new JAR is not claimed to match an old submitted JAR unless its whole-file hash matches.
