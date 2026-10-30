@@ -51,3 +51,7 @@ logs/
 .env.*
 !.env.example
 /config/lt5lyrics/
+
+# Python audit tooling
+__pycache__/
+*.pyc

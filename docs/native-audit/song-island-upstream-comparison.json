@@ -1,0 +1,12 @@
+{
+  "repository": "https://github.com/Mimitokox/song-island-minecraft",
+  "commit": "af87dc41b916bf6f6a95604611efbe8b2d9ff2c4",
+  "path": "src/main/resources/mediaplayerinfo/natives/win/MediaPlayerInfo.dll",
+  "sha256": "301c16eeb8223bb26eb31f83c93e8dcf8ddd13625cdd52f05fcd0862ecb858e9",
+  "matches_submitted_artifacts": [
+    "lt5lyrics-1.11.7.jar",
+    "lt5lyrics-1.11.7+mc26.2.jar"
+  ],
+  "match": true,
+  "scope": "Exact vendored DLL payload match; not an independent native-source rebuild or a verified MediaPlayerInfo release tag."
+}
